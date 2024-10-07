@@ -9,9 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class User {
-
-	
+public class User {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
@@ -23,21 +21,16 @@ public class User {
 	private String pwd;
 	
 	@Column(name = "token", length = 800, nullable = false)
-	private String token;
-	
+	private String token;	
 	
 	public String getUser() {
 		return user;
 	}
 
 
-
-
 	public void setUser(String user) {
 		this.user = user;
 	}
-
-
 
 
 	public String getPwd() {
@@ -52,12 +45,9 @@ public class User {
 	}
 
 
-
-
 	public String getToken() {
 		return token;
 	}
-
 
 
 

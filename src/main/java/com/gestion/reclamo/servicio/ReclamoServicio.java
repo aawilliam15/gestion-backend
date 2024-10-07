@@ -1,5 +1,6 @@
 package com.gestion.reclamo.servicio;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class ReclamoServicio {
 
 	@Autowired
 	private ReclamoRepositorio repositorioreclamo;
+	
 	@Autowired
 	private MotivoRepositorio repositoriomotivo;
 
@@ -46,7 +48,8 @@ public class ReclamoServicio {
 	public Boolean RegistroReclamo(Reclamo updatedReclamo) {
 		Boolean bresultado = false;
 
-		if (repositorioreclamo.existsById(updatedReclamo.getId())) {
+		long id=updatedReclamo.getId()!=null?updatedReclamo.getId():0;
+		if (id>0 && repositorioreclamo.existsById(id)) {
 			Reclamo existingReclamo = repositorioreclamo.findById(updatedReclamo.getId()).orElse(null);
 
 			if (existingReclamo != null) {
@@ -56,10 +59,12 @@ public class ReclamoServicio {
 				existingReclamo.setFechaRegistro(updatedReclamo.getFechaRegistro());
 				repositorioreclamo.save(existingReclamo);
 				bresultado = true;
-			} else {
-				repositorioreclamo.save(updatedReclamo);
-				bresultado = true;
 			}
+			
+		} else {
+			updatedReclamo.setFechaRegistro(new Date());
+			repositorioreclamo.save(updatedReclamo);
+			bresultado = true;
 		}
 
 		return bresultado;
