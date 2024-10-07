@@ -43,4 +43,39 @@ public class ReclamoServicio {
 		return motivos;
 	}
 
+	public Boolean RegistroReclamo(Reclamo updatedReclamo) {
+		Boolean bresultado = false;
+
+		if (repositorioreclamo.existsById(updatedReclamo.getId())) {
+			Reclamo existingReclamo = repositorioreclamo.findById(updatedReclamo.getId()).orElse(null);
+
+			if (existingReclamo != null) {
+
+				existingReclamo.setMotivoId(updatedReclamo.getMotivoId());
+				existingReclamo.setDescripcion(updatedReclamo.getDescripcion());
+				existingReclamo.setFechaRegistro(updatedReclamo.getFechaRegistro());
+				repositorioreclamo.save(existingReclamo);
+				bresultado = true;
+			} else {
+				repositorioreclamo.save(updatedReclamo);
+				bresultado = true;
+			}
+		}
+
+		return bresultado;
+	}
+
+	public Boolean EliminaReclamo(Long reclamoId) {
+		Boolean bresultado = false;
+
+		if (repositorioreclamo.existsById(reclamoId)) {
+			Reclamo existingReclamo = repositorioreclamo.findById(reclamoId).orElse(null);
+			existingReclamo.setEstado("Eliminado");
+			repositorioreclamo.save(existingReclamo);
+			bresultado = true;
+		}
+
+		return bresultado;
+	}
+
 }
