@@ -7,15 +7,17 @@ import com.gestion.reclamo.modelo.Reclamo;
 public class ReclamoMotivoDTO extends Reclamo {
 
 	public String motivodsc;
+	public String empresadsc;
 
 	public ReclamoMotivoDTO() {
 
 	}
 
-	public ReclamoMotivoDTO(Reclamo reclamo, String motivodsc) {
-		super(reclamo.getId(), reclamo.getEmpresa(), reclamo.getMotivoId(), reclamo.getDescripcion(),
+	public ReclamoMotivoDTO(Reclamo reclamo, String motivodsc,String empresadsc) {
+		super(reclamo.getId(), reclamo.getEmpresaId(), reclamo.getMotivoId(), reclamo.getDescripcion(),
 				reclamo.getAdjunto(), reclamo.getFechaRegistro(), reclamo.getCorreo(),reclamo.getEstado());
 		this.motivodsc = motivodsc;
+		this.empresadsc=empresadsc;
 	}
 
 	public String getMotivodsc() {
@@ -53,13 +55,13 @@ public class ReclamoMotivoDTO extends Reclamo {
 	}
 
 	@Override
-	public String getEmpresa() {
-		return super.getEmpresa() != null ? super.getEmpresa() : null;
+	public Long getEmpresaId() {
+		return super.getEmpresaId() != null ? super.getEmpresaId() : null;
 	}
 	
 	@Override
 	public String getEstado() {
 		return super.getEstado() != null ? super.getEstado() : null;
 	}
-
+	
 }

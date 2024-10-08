@@ -18,7 +18,7 @@ public class Reclamo {
 	private Long Id;
 
 	@Column(name = "EmpresaId", nullable = false)
-	private String EmpresaId;
+	private Long EmpresaId;
 
 	@Column(name = "MotivoId", nullable = false)
 	private Long MotivoId;
@@ -47,7 +47,7 @@ public class Reclamo {
 		Estado = estado;
 	}
 
-	public Reclamo(Long id, String empresaid, Long motivoId, String descripcion, String adjunto, Date fechaRegistro,
+	public Reclamo(Long id, Long empresaid, Long motivoId, String descripcion, String adjunto, Date fechaRegistro,
 			String correo,String estado) {
 		super();
 		Id = id;
@@ -68,12 +68,12 @@ public class Reclamo {
 		Id = id;
 	}
 
-	public String getEmpresa() {
+	public Long getEmpresaId() {
 		return EmpresaId;
 	}
 
-	public void setEmpresa(String empresa) {
-		EmpresaId = empresa;
+	public void setEmpresaId(Long empresaId) {
+		EmpresaId = empresaId;
 	}
 
 	public Long getMotivoId() {
