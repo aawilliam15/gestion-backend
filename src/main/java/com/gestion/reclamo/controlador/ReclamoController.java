@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.reclamo.mensaje.ReclamoMotivoDTO;
+import com.gestion.reclamo.modelo.Empresa;
 import com.gestion.reclamo.modelo.Motivo;
 import com.gestion.reclamo.modelo.Reclamo;
 
@@ -36,6 +37,13 @@ public class ReclamoController {
 	public List<Motivo> listarMotivos()
 	{
 		return servicio.getAllMotivo();
+		
+	}
+	
+	@GetMapping("/empresa")
+	public List<Empresa> listarEmpresas()
+	{
+		return servicio.getAllEmpresa();
 		
 	}
 	

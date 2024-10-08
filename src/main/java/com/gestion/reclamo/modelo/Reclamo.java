@@ -17,8 +17,8 @@ public class Reclamo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
-	@Column(name = "Empresa", length = 100, nullable = false)
-	private String Empresa;
+	@Column(name = "EmpresaId", nullable = false)
+	private String EmpresaId;
 
 	@Column(name = "MotivoId", nullable = false)
 	private Long MotivoId;
@@ -47,11 +47,11 @@ public class Reclamo {
 		Estado = estado;
 	}
 
-	public Reclamo(Long id, String empresa, Long motivoId, String descripcion, String adjunto, Date fechaRegistro,
+	public Reclamo(Long id, String empresaid, Long motivoId, String descripcion, String adjunto, Date fechaRegistro,
 			String correo,String estado) {
 		super();
 		Id = id;
-		Empresa = empresa;
+		EmpresaId = empresaid;
 		MotivoId = motivoId;
 		Descripcion = descripcion;
 		Adjunto = adjunto;
@@ -69,11 +69,11 @@ public class Reclamo {
 	}
 
 	public String getEmpresa() {
-		return Empresa;
+		return EmpresaId;
 	}
 
 	public void setEmpresa(String empresa) {
-		Empresa = empresa;
+		EmpresaId = empresa;
 	}
 
 	public Long getMotivoId() {

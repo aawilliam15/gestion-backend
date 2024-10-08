@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestion.reclamo.mensaje.ReclamoMotivoDTO;
+import com.gestion.reclamo.modelo.Empresa;
 import com.gestion.reclamo.modelo.Motivo;
 import com.gestion.reclamo.modelo.Reclamo;
+import com.gestion.reclamo.repositorio.EmpresaRepositorio;
 import com.gestion.reclamo.repositorio.MotivoRepositorio;
 import com.gestion.reclamo.repositorio.ReclamoRepositorio;
 
@@ -21,6 +23,10 @@ public class ReclamoServicio {
 	
 	@Autowired
 	private MotivoRepositorio repositoriomotivo;
+	
+	@Autowired
+	private EmpresaRepositorio repositorioempresa;
+
 
 	public List<ReclamoMotivoDTO> getAllReclamos() {
 
@@ -44,6 +50,15 @@ public class ReclamoServicio {
 
 		return motivos;
 	}
+	
+	
+	public List<Empresa> getAllEmpresa() {
+
+		List<Empresa> empresas = repositorioempresa.findAll();
+
+		return empresas;
+	}
+	
 
 	public Boolean RegistroReclamo(Reclamo updatedReclamo) {
 		Boolean bresultado = false;
