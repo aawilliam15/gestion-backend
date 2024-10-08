@@ -113,5 +113,23 @@ public class ReclamoServicio {
 		}
 		return bresultado;
 	}
+	
+	public Boolean ActualizaEstado(Long reclamoId,String Estado) {
+		Boolean bresultado = false;
+
+		try {
+
+			if (repositorioreclamo.existsById(reclamoId)) {
+				Reclamo existingReclamo = repositorioreclamo.findById(reclamoId).orElse(null);
+				existingReclamo.setEstado(Estado);				
+				repositorioreclamo.save(existingReclamo);
+				bresultado = true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			bresultado = false;
+		}
+		return bresultado;
+	}
 
 }
